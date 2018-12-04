@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class Student {
+public class Student{
     @Id
     private String Id;
 
