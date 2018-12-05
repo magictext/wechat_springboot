@@ -10,27 +10,38 @@ public class Person {
 
     private String ID;
 
+    private boolean isStudent;
+
+    public boolean isStudent() {
+        return isStudent;
+    }
+
+    public void setStudent(boolean student) {
+        isStudent = student;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "Uid='" + Uid + '\'' +
+                ", ID='" + ID + '\'' +
+                ", isStudent=" + isStudent +
+                '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(Uid, person.Uid) &&
+        return isStudent == person.isStudent &&
+                Objects.equals(Uid, person.Uid) &&
                 Objects.equals(ID, person.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Uid, ID);
-    }
-
-    @Override
-    public String
-    toString() {
-        return "Person{" +
-                "Uid='" + Uid + '\'' +
-                ", ID='" + ID + '\'' +
-                '}';
+        return Objects.hash(Uid, ID, isStudent);
     }
 
     public String getID() {

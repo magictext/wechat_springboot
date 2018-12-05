@@ -11,8 +11,6 @@ public class Student{
 
     private String Class;
 
-
-
     private String name;
 
     private boolean sex;
