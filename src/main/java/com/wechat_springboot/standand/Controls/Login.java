@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
     @RestController
@@ -19,7 +20,7 @@ public class Login {
     private RedisOperator redis;
 
     @RequestMapping(value = "/loginin",method = RequestMethod.GET)
-    public String loginin(String code){
+    public String loginin(String code, HttpSession httpSession){
         String url="https://api.weixin.qq.com/sns/jscode2session?" +
                 "appid=wx7c3fa8b4de3fa68f&" +
                 "secret=5d50c86aba4cd65a0b1e1a53b5c1a194&" +
@@ -42,4 +43,6 @@ public class Login {
 //        student.setName(name);
 //        return student;
 //    }
+
+
 }

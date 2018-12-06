@@ -7,10 +7,9 @@ import java.util.Objects;
 
 @Entity
 public class StuClassCard implements Serializable {
+
     @Id
-    private String stuid;
-    @Id
-    private String courseid;
+    private StuClassCardPK stuClassCardPK;
 
     private int week;
 
@@ -22,52 +21,12 @@ public class StuClassCard implements Serializable {
 
     private String testroomid;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StuClassCard that = (StuClassCard) o;
-        return week == that.week &&
-                time == that.time &&
-                Objects.equals(stuid, that.stuid) &&
-                Objects.equals(courseid, that.courseid) &&
-                Objects.equals(teacherid, that.teacherid) &&
-                Objects.equals(roomid, that.roomid) &&
-                Objects.equals(testroomid, that.testroomid);
+    public StuClassCardPK getStuClassCardPK() {
+        return stuClassCardPK;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(stuid, courseid, week, time, teacherid, roomid, testroomid);
-    }
-
-    @Override
-    public String toString() {
-        return "StuClassCard{" +
-                "stuid='" + stuid + '\'' +
-                ", courseid='" + courseid + '\'' +
-                ", week=" + week +
-                ", time=" + time +
-                ", teacherid='" + teacherid + '\'' +
-                ", roomid='" + roomid + '\'' +
-                ", testroomid='" + testroomid + '\'' +
-                '}';
-    }
-
-    public String getStuid() {
-        return stuid;
-    }
-
-    public void setStuid(String stuid) {
-        this.stuid = stuid;
-    }
-
-    public String getCourseid() {
-        return courseid;
-    }
-
-    public void setCourseid(String courseid) {
-        this.courseid = courseid;
+    public void setStuClassCardPK(StuClassCardPK stuClassCardPK) {
+        this.stuClassCardPK = stuClassCardPK;
     }
 
     public int getWeek() {
@@ -100,5 +59,43 @@ public class StuClassCard implements Serializable {
 
     public void setRoomid(String roomid) {
         this.roomid = roomid;
+    }
+
+    public String getTestroomid() {
+        return testroomid;
+    }
+
+    public void setTestroomid(String testroomid) {
+        this.testroomid = testroomid;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StuClassCard that = (StuClassCard) o;
+        return week == that.week &&
+                time == that.time &&
+                Objects.equals(stuClassCardPK, that.stuClassCardPK) &&
+                Objects.equals(teacherid, that.teacherid) &&
+                Objects.equals(roomid, that.roomid) &&
+                Objects.equals(testroomid, that.testroomid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stuClassCardPK, week, time, teacherid, roomid, testroomid);
+    }
+
+    @Override
+    public String toString() {
+        return "StuClassCard{" +
+                "stuClassCardPK=" + stuClassCardPK +
+                ", week=" + week +
+                ", time=" + time +
+                ", teacherid='" + teacherid + '\'' +
+                ", roomid='" + roomid + '\'' +
+                ", testroomid='" + testroomid + '\'' +
+                '}';
     }
 }

@@ -7,10 +7,9 @@ import java.util.Objects;
 
 @Entity
 public class UnionClassCard implements Serializable {
+
     @Id
-    private String classid;
-    @Id
-    private String courseid;
+    private UnionClassCardPK unionClassCardPK;
 
     private int week;
 
@@ -22,22 +21,64 @@ public class UnionClassCard implements Serializable {
 
     private String testroomid;
 
-    public String getCourseid() {
-        return courseid;
+    public UnionClassCardPK getUnionClassCardPK() {
+        return unionClassCardPK;
     }
 
-    public void setCourseid(String courseid) {
-        this.courseid = courseid;
+    public void setUnionClassCardPK(UnionClassCardPK unionClassCardPK) {
+        this.unionClassCardPK = unionClassCardPK;
     }
 
-    public String getClassid() {
-        return classid;
+    public int getWeek() {
+        return week;
     }
 
+    public void setWeek(int week) {
+        this.week = week;
+    }
 
+    public int getTime() {
+        return time;
+    }
 
-    public void setClassid(String classid) {
-        this.classid = classid;
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getTeacherid() {
+        return teacherid;
+    }
+
+    public void setTeacherid(String teacherid) {
+        this.teacherid = teacherid;
+    }
+
+    public String getRoomid() {
+        return roomid;
+    }
+
+    public void setRoomid(String roomid) {
+        this.roomid = roomid;
+    }
+
+    public String getTestroomid() {
+        return testroomid;
+    }
+
+    public void setTestroomid(String testroomid) {
+        this.testroomid = testroomid;
+    }
+
+    @Override
+    public String toString() {
+        return "UnionClassCard{" +
+                "unionClassCardPK=" + unionClassCardPK +
+                ", week=" + week +
+                ", time=" + time +
+                ", teacherid='" + teacherid + '\'' +
+                ", roomid='" + roomid + '\'' +
+                ", testroomid='" + testroomid + '\'' +
+                '}';
     }
 
     @Override
@@ -47,8 +88,7 @@ public class UnionClassCard implements Serializable {
         UnionClassCard that = (UnionClassCard) o;
         return week == that.week &&
                 time == that.time &&
-                Objects.equals(classid, that.classid) &&
-                Objects.equals(courseid, that.courseid) &&
+                Objects.equals(unionClassCardPK, that.unionClassCardPK) &&
                 Objects.equals(teacherid, that.teacherid) &&
                 Objects.equals(roomid, that.roomid) &&
                 Objects.equals(testroomid, that.testroomid);
@@ -56,19 +96,6 @@ public class UnionClassCard implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(classid, courseid, week, time, teacherid, roomid, testroomid);
-    }
-
-    @Override
-    public String toString() {
-        return "UnionClassCard{" +
-                "classid='" + classid + '\'' +
-                ", courseid='" + courseid + '\'' +
-                ", week=" + week +
-                ", time=" + time +
-                ", teacherid='" + teacherid + '\'' +
-                ", roomid='" + roomid + '\'' +
-                ", testroomid='" + testroomid + '\'' +
-                '}';
+        return Objects.hash(unionClassCardPK, week, time, teacherid, roomid, testroomid);
     }
 }

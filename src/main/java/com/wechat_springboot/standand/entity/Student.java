@@ -1,5 +1,6 @@
 package com.wechat_springboot.standand.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
@@ -9,8 +10,9 @@ public class Student{
     @Id
     private String Id;
 
+    @Column(nullable = false)
     private String Class;
-
+    @Column(nullable = false)
     private String name;
 
     private boolean sex;

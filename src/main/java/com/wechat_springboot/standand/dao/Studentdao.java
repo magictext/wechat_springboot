@@ -28,4 +28,14 @@ public class Studentdao {
         }
         return list;
     }
+
+    public List<Student> selectBymajor(String major) throws Exception {
+        String sql="select * from Student where class=?";
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql, new Object[]{major});
+        List<Student> list=new ArrayList();
+        for (Map map : maps) {
+            list.add((Student) MapToObj.mapToObject(map, Student.class));
+        }
+        return list;
+    }
 }
