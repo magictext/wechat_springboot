@@ -18,6 +18,23 @@ public class Student{
     private boolean sex;
 
 
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
+
+
+    public String getclass() {
+        return Class;
+    }
+
+    public void setClass(String aClass) {
+        Class = aClass;
+    }
+
     public String getName() {
         return name;
     }
@@ -32,18 +49,6 @@ public class Student{
 
     public void setSex(boolean sex) {
         this.sex = sex;
-    }
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
-
-    public void setClass(String aClass) {
-        Class = aClass;
     }
 
     @Override

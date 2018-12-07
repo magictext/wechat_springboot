@@ -55,16 +55,4 @@ public class Login {
     }
 
 
-
-
-//    @RequestMapping(value = "/{xiling}",method = RequestMethod.GET)
-//    public Student loginin(@PathVariable("xiling")  String name){
-//        Student student =new Student();
-//        student.setClass("166");
-//        student.setId("16263626");
-//        student.setName(name);
-//        return student;
-//    }
-
-
 }

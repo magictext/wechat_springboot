@@ -7,7 +7,9 @@ import java.util.Objects;
 @Entity
 public class Course {
     @Id
-    private String CourseId;
+    private String courseId;
+
+    private String courseName;
 
     private String creater;
 
@@ -18,7 +20,8 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-                "CourseId='" + CourseId + '\'' +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
                 ", creater='" + creater + '\'' +
                 ", createtime='" + createtime + '\'' +
                 ", studycount=" + studycount +
@@ -31,22 +34,31 @@ public class Course {
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
         return studycount == course.studycount &&
-                Objects.equals(CourseId, course.CourseId) &&
+                Objects.equals(courseId, course.courseId) &&
+                Objects.equals(courseName, course.courseName) &&
                 Objects.equals(creater, course.creater) &&
                 Objects.equals(createtime, course.createtime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(CourseId, creater, createtime, studycount);
+        return Objects.hash(courseId, courseName, creater, createtime, studycount);
     }
 
     public String getCourseId() {
-        return CourseId;
+        return courseId;
     }
 
     public void setCourseId(String courseId) {
-        CourseId = courseId;
+        this.courseId = courseId;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getCreater() {

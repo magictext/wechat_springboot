@@ -21,6 +21,14 @@ public class UnionClassCardPK implements Serializable {
                 '}';
     }
 
+    public UnionClassCardPK(String classid, String courseid) {
+        this.classid = classid;
+        this.courseid = courseid;
+    }
+
+    public UnionClassCardPK() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

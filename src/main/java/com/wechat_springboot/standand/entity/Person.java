@@ -11,20 +11,20 @@ public class Person {
 
     private String ID;
 
-    private boolean isStudent;
+    private boolean isTeacher;
 
-    public boolean isStudent() {
-        return isStudent;
+    public boolean isTeacher() {
+        return isTeacher;
     }
 
     public void setStudent(boolean student) {
-        isStudent = student;
+        isTeacher = student;
     }
 
-    public Person(String uid, String ID, boolean isStudent) {
+    public Person(String uid, String ID, boolean isTeacher) {
         Uid = uid;
         this.ID = ID;
-        this.isStudent = isStudent;
+        this.isTeacher = isTeacher;
     }
 
     public Person() {
@@ -36,7 +36,7 @@ public class Person {
         return "Person{" +
                 "Uid='" + Uid + '\'' +
                 ", ID='" + ID + '\'' +
-                ", isStudent=" + isStudent +
+                ", isTeacher=" + isTeacher +
                 '}';
     }
 
@@ -45,14 +45,14 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return isStudent == person.isStudent &&
+        return isTeacher == person.isTeacher &&
                 Objects.equals(Uid, person.Uid) &&
                 Objects.equals(ID, person.ID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Uid, ID, isStudent);
+        return Objects.hash(Uid, ID, isTeacher);
     }
 
     public String getID() {

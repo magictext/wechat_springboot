@@ -20,6 +20,14 @@ public class StuClassCardPK implements Serializable {
                 '}';
     }
 
+    public StuClassCardPK(String stuid, String courseid) {
+        this.stuid = stuid;
+        this.courseid = courseid;
+    }
+
+    public StuClassCardPK() {
+    }
+
     public String getCourseid() {
         return courseid;
     }
