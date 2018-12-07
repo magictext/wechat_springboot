@@ -1,9 +1,10 @@
 package com.wechat_springboot.standand.entity;
 
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
-
+@Entity
 public class Person {
     @Id
     private String Uid;
@@ -18,6 +19,16 @@ public class Person {
 
     public void setStudent(boolean student) {
         isStudent = student;
+    }
+
+    public Person(String uid, String ID, boolean isStudent) {
+        Uid = uid;
+        this.ID = ID;
+        this.isStudent = isStudent;
+    }
+
+    public Person() {
+
     }
 
     @Override
