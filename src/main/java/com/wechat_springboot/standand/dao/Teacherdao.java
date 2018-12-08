@@ -18,4 +18,10 @@ public class Teacherdao {
     @Resource
     public JdbcTemplate jdbcTemplate;
 
+    public String selectNamebyId(String id){
+        String sql="select teacher_name from teacher where teacher_id=?";
+        String name=(String)jdbcTemplate.queryForMap(sql,new Object[]{id}).get("teacher_name");
+        return name;
+    }
+
 }

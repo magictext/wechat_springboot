@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/start")
-public class Login {
+public class Login{
 
     @Resource
     BasicService basicService;

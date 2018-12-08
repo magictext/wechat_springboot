@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/teachar")
-public class QueryForStudent {
+public class QueryForStudent{
     @Autowired
     BasicService basicService;
 

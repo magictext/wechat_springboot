@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 @Service
-public class BasicService {
+public class BasicService{
     @Resource
     StudentRepository studentRepository;
     @Resource
