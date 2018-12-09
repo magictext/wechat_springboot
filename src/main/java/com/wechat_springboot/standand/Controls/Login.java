@@ -17,13 +17,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/start")
-public class Login{
+public class Login extends ControlsParent{
 
-    @Resource
-    BasicService basicService;
-
-    @Resource
-    private RedisOperator redis;
+//    @Resource
+//    BasicService basicService;
+//
+//    @Resource
+//    private RedisOperator redis;
 
     @RequestMapping(value = "/loginin",method = RequestMethod.GET)
     public Map<String,Object> loginin(String code, HttpSession httpSession){

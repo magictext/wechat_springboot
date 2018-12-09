@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ServiceForClassCard{
-    @Resource
-    StuClassCardDao stuClassCardDao;
-    @Resource
-    UnionClassCardDao unionClassCardDao;
+public class ServiceForClassCard extends ServiceParent{
+//    @Resource
+//    StuClassCardDao stuClassCardDao;
+//    @Resource
+//    UnionClassCardDao unionClassCardDao;
     @Transactional
     public List<ClassCardDate> selectStuClassCard(Student student) throws Exception {
         List<ClassCardDate> list=new ArrayList<>();

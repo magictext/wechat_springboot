@@ -15,17 +15,17 @@ import java.util.List;
 import java.util.function.Supplier;
 
 @Service
-public class BasicService{
-    @Resource
-    StudentRepository studentRepository;
-    @Resource
-    TeacherRepository teacherRepository;
-    @Resource
-    ClassroomRepository classroomRepository;
-    @Resource
-    ClassRepository classRepository;
-    @Resource
-    PersonRepository personRepository;
+public class BasicService extends ServiceParent{
+//    @Resource
+//    StudentRepository studentRepository;
+//    @Resource
+//    TeacherRepository teacherRepository;
+//    @Resource
+//    ClassroomRepository classroomRepository;
+//    @Resource
+//    ClassRepository classRepository;
+//    @Resource
+//    PersonRepository personRepository;
 
     @Transactional
     public void registerStudent(Student student){

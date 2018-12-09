@@ -11,9 +11,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/teachar")
-public class QueryForStudent{
-    @Autowired
-    BasicService basicService;
+public class QueryForStudent extends ControlsParent{
+//    @Autowired
+//    BasicService basicService;
 
     @RequestMapping(value = "/selectAllStudent")
     public List<Student> selectAllStudent() {

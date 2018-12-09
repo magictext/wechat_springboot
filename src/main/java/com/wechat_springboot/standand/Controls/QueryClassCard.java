@@ -18,17 +18,17 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-public class QueryClassCard{
-    @Resource
-    private RedisOperator redis;
-    @Resource
-    private BasicService basicService;
-    @Resource
-    private Studentdao studentdao;
-    @Resource
-    private StuClassCardDao stuClassCardDao;
-    @Resource
-    private ServiceForClassCard serviceForClassCard;
+public class QueryClassCard extends ControlsParent{
+//    @Resource
+//    private RedisOperator redis;
+//    @Resource
+//    private BasicService basicService;
+//    @Resource
+//    private Studentdao studentdao;
+//    @Resource
+//    private StuClassCardDao stuClassCardDao;
+//    @Resource
+//    private ServiceForClassCard serviceForClassCard;
 
     @RequestMapping(value = "/classcard" ,method = RequestMethod.GET)
     public List<ClassCardDate> getClassCard(HttpSession session) throws Exception {
