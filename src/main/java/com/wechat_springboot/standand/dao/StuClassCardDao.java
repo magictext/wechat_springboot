@@ -53,18 +53,19 @@ public class StuClassCardDao {
                     coursedao.selectNamebyId(stuClassCard.getStuClassCardPK().getCourseid()),
                     teacherdao.selectNamebyId(stuClassCard.getTeacherid())));
         }
-
-        String sql2="select * from union_class_card where classid=?";
-        String classid=studentRepository.findById(id).orElse(new Student()).getclass();
-        maps.clear();
-        maps=jdbcTemplate.queryForList(sql2,new Object[]{classid});
+                return list;
+    }
+    public List<ClassCardDate> SelectbyTeacherId(String Teacherid) throws Exception {
+        List<ClassCardDate> list=new ArrayList<>();
+        String sql2="select * from stu_class_card where teacherid=?";
+        List<Map<String, Object>> maps=jdbcTemplate.queryForList(sql2,new Object[]{Teacherid});
         for (Map map : maps) {
             UnionClassCard unionClassCard= (UnionClassCard) MapToObj.mapToObject(map,UnionClassCard.class);
-            list.add(new ClassCardDate(unionClassCard.getWeek(),unionClassCard.getTime(),unionClassCard.getTestroomid(),
+            list.add(new ClassCardDate(unionClassCard.getWeek(),unionClassCard.getTime(),unionClassCard.getRoomid(),
                     coursedao.selectNamebyId(unionClassCard.getUnionClassCardPK().getCourseid()),
                     teacherdao.selectNamebyId(unionClassCard.getTeacherid())));
         }
-        ;        return list;
+        return list;
     }
 
 }

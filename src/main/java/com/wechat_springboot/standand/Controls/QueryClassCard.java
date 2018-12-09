@@ -5,6 +5,7 @@ import com.wechat_springboot.standand.dao.Studentdao;
 import com.wechat_springboot.standand.entity.ClassCardDate;
 import com.wechat_springboot.standand.entity.Person;
 import com.wechat_springboot.standand.entity.Student;
+import com.wechat_springboot.standand.entity.Teacher;
 import com.wechat_springboot.standand.service.BasicService;
 import com.wechat_springboot.standand.service.ServiceForClassCard;
 import com.wechat_springboot.standand.wx_util.RedisOperator;
@@ -34,13 +35,9 @@ public class QueryClassCard extends ControlsParent{
     public List<ClassCardDate> getClassCard(HttpSession session) throws Exception {
         Person person=basicService.findByuid(redis.get((String)session.getAttribute("session")));
         if (person.isTeacher()){
-
-            //待补充
-
+            return serviceForClassCard.selectTeaClassCard(person);
         }else {
-            Student student=basicService.selectStudentByid(person.getID());
-            serviceForClassCard.selectStuClassCard(student);
+            return serviceForClassCard.selectStuClassCard(person);
         }
-        return null;
     }
 }

@@ -3,16 +3,13 @@ package com.wechat_springboot.standand.Controls;
 import com.wechat_springboot.standand.entity.Person;
 import com.wechat_springboot.standand.entity.Student;
 import com.wechat_springboot.standand.entity.Teacher;
-import com.wechat_springboot.standand.service.BasicService;
-import com.wechat_springboot.standand.wx_util.HttpClientUtil;
-import com.wechat_springboot.standand.wx_util.JsonUtils;
-import com.wechat_springboot.standand.wx_util.RedisOperator;
-import com.wechat_springboot.standand.wx_util.Wechat_Session_model;
+import com.wechat_springboot.standand.wx_util.*;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -42,16 +39,18 @@ public class Login extends ControlsParent{
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public Map<String,Boolean> register(Map<String,String> map,HttpSession httpSession){
+    public Map<String,Boolean> register(Map<String, Object> map, HttpSession httpSession) throws Exception {
         String uid =redis.get((String) httpSession.getAttribute("session"));
         String str=(String)httpSession.getAttribute("isteacher");
-        basicService.registerPersonn(new Person(uid,map.get("id"),str.equals("true")));
+        basicService.registerPersonn(new Person(uid, (String) map.get("id"),str.equals("true")));
         if(str.equals("true")){
-            basicService.registerTeacher(JsonUtils.jsonToPojo(JsonUtils.objectToJson(map),Teacher.class));
+            basicService.registerTeacher((Teacher) MapToObj.mapToObject(map,Teacher.class));
         }else {
-            basicService.registerStudent(JsonUtils.jsonToPojo(JsonUtils.objectToJson(map),Student.class));
+            basicService.registerStudent((Student) MapToObj.mapToObject(map,Student.class));
         }
-        return null;
+        HashMap map1=new HashMap();
+        map1.put("success",true);
+        return map1;
     }
 
 

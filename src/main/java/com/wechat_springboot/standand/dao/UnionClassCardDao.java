@@ -34,4 +34,31 @@ public class UnionClassCardDao{
         }
         return list;
     }
+
+    public List<ClassCardDate> SelectTesttime(String Classid) throws Exception {
+        List<ClassCardDate> list=new ArrayList<>();
+        String sql2="select * from union_class_card where classid=?";
+        List<Map<String, Object>> maps=jdbcTemplate.queryForList(sql2,new Object[]{Classid});
+        for (Map map : maps) {
+            UnionClassCard unionClassCard= (UnionClassCard) MapToObj.mapToObject(map,UnionClassCard.class);
+            list.add(new ClassCardDate(unionClassCard.getWeek(),unionClassCard.getTime(),unionClassCard.getTestroomid(),
+                    coursedao.selectNamebyId(unionClassCard.getUnionClassCardPK().getCourseid()),
+                    teacherdao.selectNamebyId(unionClassCard.getTeacherid())));
+        }
+        return list;
+    }
+
+    public List<ClassCardDate> SelectbyTeacherId(String Teacherid) throws Exception {
+        List<ClassCardDate> list=new ArrayList<>();
+        String sql2="select * from union_class_card where teacherid=?";
+        List<Map<String, Object>> maps=jdbcTemplate.queryForList(sql2,new Object[]{Teacherid});
+        for (Map map : maps) {
+            UnionClassCard unionClassCard= (UnionClassCard) MapToObj.mapToObject(map,UnionClassCard.class);
+            list.add(new ClassCardDate(unionClassCard.getWeek(),unionClassCard.getTime(),unionClassCard.getRoomid(),
+                    coursedao.selectNamebyId(unionClassCard.getUnionClassCardPK().getCourseid()),
+                    teacherdao.selectNamebyId(unionClassCard.getTeacherid())));
+        }
+        return list;
+    }
+
 }

@@ -14,11 +14,6 @@ public class ControlsParent {
 
     @Resource
     RedisOperator redis;
-    @Resource
-    Studentdao studentdao;
-
-    @Resource
-    StuClassCardDao stuClassCardDao;
 
     @Resource
     ServiceForClassCard serviceForClassCard;

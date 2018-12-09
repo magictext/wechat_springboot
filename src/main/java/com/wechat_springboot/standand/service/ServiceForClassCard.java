@@ -20,11 +20,22 @@ public class ServiceForClassCard extends ServiceParent{
 //    StuClassCardDao stuClassCardDao;
 //    @Resource
 //    UnionClassCardDao unionClassCardDao;
+    @Resource
+    BasicService basicService;
     @Transactional
-    public List<ClassCardDate> selectStuClassCard(Student student) throws Exception {
+    public List<ClassCardDate> selectStuClassCard(Person person) throws Exception {
+        Student student=basicService.selectStudentByid(person.getID());
         List<ClassCardDate> list=new ArrayList<>();
         list.addAll(stuClassCardDao.SelectByStuId(student.getId()));
         list.addAll(unionClassCardDao.SelectByClassId(student.getclass()));
+        return list ;
+    }
+
+    @Transactional
+    public List<ClassCardDate> selectTeaClassCard(Person person) throws Exception {
+        List<ClassCardDate> list=new ArrayList<>();
+        list.addAll(stuClassCardDao.SelectbyTeacherId(person.getID()));
+        list.addAll(unionClassCardDao.SelectbyTeacherId(person.getID()));
         return list ;
     }
 
