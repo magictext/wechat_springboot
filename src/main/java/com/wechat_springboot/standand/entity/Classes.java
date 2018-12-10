@@ -1,11 +1,11 @@
 package com.wechat_springboot.standand.entity;
 
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
 import java.util.Objects;
-
 @Entity
-public class Class {
+public class Classes {
     @Id
     private String id;
 
@@ -31,9 +31,9 @@ public class Class {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Class aClass = (Class) o;
-        return Objects.equals(id, aClass.id) &&
-                Objects.equals(major, aClass.major);
+        Classes classes = (Classes) o;
+        return Objects.equals(id, classes.id) &&
+                Objects.equals(major, classes.major);
     }
 
     @Override

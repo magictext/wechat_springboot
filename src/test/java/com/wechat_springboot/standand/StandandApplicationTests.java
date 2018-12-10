@@ -1,6 +1,9 @@
 package com.wechat_springboot.standand;
 
 import com.wechat_springboot.standand.dao.Coursedao;
+import com.wechat_springboot.standand.wx_util.HttpClientUtil;
+import com.wechat_springboot.standand.wx_util.IMoocJSONResult;
+import com.wechat_springboot.standand.wx_util.JsonUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +22,14 @@ public class StandandApplicationTests {
 
     @Test
     public void testdao(){
-        System.out.println(coursedao.selectNamebyId("166"));
-        //Assert.assertArrayEquals("myname".toCharArray(),.toCharArray());
+
+        String url = "http://localhost/api/addClass";
+        Map<String, String> param = new HashMap<>();
+        /*private String id;
+        private String major;*/
+        param.put("id","167");
+        param.put("major","software");
+        HttpClientUtil.doPost(url, param);
+
     }
 }
