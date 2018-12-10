@@ -22,7 +22,6 @@ public class StandandApplicationTests {
 
     @Test
     public void testdao(){
-
         String url = "http://localhost/api/addClass";
         Map<String, String> param = new HashMap<>();
         /*private String id;
@@ -30,6 +29,5 @@ public class StandandApplicationTests {
         param.put("id","167");
         param.put("major","software");
         HttpClientUtil.doPost(url, param);
-
     }
 }

@@ -1,5 +1,6 @@
 package com.wechat_springboot.standand.Controls;
 
+import com.wechat_springboot.standand.entity.ClassCardDate;
 import com.wechat_springboot.standand.entity.Classes;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,14 @@ public class ApiForSchool extends ControlsParent {
     public void addClass(Classes class1){
         System.out.println("\n\n\n\n\n\n"+class1.toString()+"\n\n\n\n\n");
         basicService.registerClass(class1);
+    }
+    @RequestMapping(value = "/addClassCard")
+    public void addClassCard(){
+
+    }
+    @RequestMapping(value = "addTeacher")
+    public void addTeacher(){
+
     }
 
 
