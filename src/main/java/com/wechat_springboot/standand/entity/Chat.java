@@ -19,6 +19,13 @@ public class Chat {
         this.courseid = courseid;
     }
 
+    public void add(ChatDate chatDate){
+        if (arrayList.size()==100){
+            arrayList.add(chatDate);
+            arrayList.remove(0);
+        }else arrayList.add(chatDate);
+    }
+
     @Override
     public String toString() {
         return "Chat{" +
