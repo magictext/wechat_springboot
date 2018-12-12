@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/teachar")
+@RequestMapping(value = "/teacher",method = RequestMethod.GET)
 public class QueryForStudent extends ControlsParent{
-//    @Autowired
-//    BasicService basicService;
+    @Autowired
+    BasicService basicService;
 
-    @RequestMapping(value = "/selectAllStudent")
+    @RequestMapping(value = "/selectAllStudent",method = RequestMethod.GET)
     public List<Student> selectAllStudent() {
         return basicService.getAllSturent();
     }
 
-    @RequestMapping(value = "/quaryStudentById", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryStudentById", method = RequestMethod.GET)
     public Student quaryStudentById(String id) {
         return basicService.selectStudentByid(id);
     }

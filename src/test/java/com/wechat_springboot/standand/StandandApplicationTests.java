@@ -17,17 +17,9 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StandandApplicationTests {
-    @Resource
-    public Coursedao coursedao;
 
     @Test
-    public void testdao(){
-        String url = "http://localhost/api/addClass";
-        Map<String, String> param = new HashMap<>();
-        /*private String id;
-        private String major;*/
-        param.put("id","167");
-        param.put("major","software");
-        HttpClientUtil.doPost(url, param);
+    public void test(){
+
     }
 }

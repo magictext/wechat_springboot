@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.Map;
 
 @RestController
@@ -26,12 +29,25 @@ public class ApiForSchool extends ControlsParent {
     }
     @RequestMapping(value = "/addClassCard")
     public void addClassCard(){
-
     }
-    @RequestMapping(value = "addTeacher")
-    public void addTeacher(){
-
+    @RequestMapping(value = "getnull",method = RequestMethod.GET)
+    public String getnull(){
+        return "null";
     }
+//    @RequestMapping(value = "/download",method =RequestMethod.GET)
+//    public String download(HttpServletResponse httpServletResponse) throws IOException {
+//        ServletOutputStream outputStream = httpServletResponse.getOutputStream();
+//        httpServletResponse.setHeader("Content-Disposition", "attachment;fileName=mysql57-community-release-el7-8.noarch.rpm");
+//        File file=new File("/home/xiling/mysql57-community-release-el7-8.noarch.rpm");
+//        FileInputStream fileInputStream=new FileInputStream(file);
+//        byte buffer[]=new byte[1024];
+//        int read = fileInputStream.read(buffer);
+//        while (read!=-1) {
+//            outputStream.write(buffer);
+//            read = fileInputStream.read(buffer);
+//        }
+//        return "download";
+//    }
 
 
 

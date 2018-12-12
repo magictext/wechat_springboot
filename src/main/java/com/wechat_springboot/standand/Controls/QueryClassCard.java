@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/class",method = RequestMethod.GET)
 public class QueryClassCard extends ControlsParent{
 //    @Resource
 //    private RedisOperator redis;
