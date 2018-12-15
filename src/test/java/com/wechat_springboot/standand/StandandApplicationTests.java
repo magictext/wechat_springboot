@@ -13,13 +13,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StandandApplicationTests {
-
+    @Resource
+    Logger logger;
     @Test
     public void test(){
-
+        logger.info("this is a log");
     }
 }

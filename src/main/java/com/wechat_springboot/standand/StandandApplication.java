@@ -1,11 +1,14 @@
 package com.wechat_springboot.standand;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class StandandApplication {
+
     public static void main(String[] args) {
+
         SpringApplication.run(StandandApplication.class, args);
     }
 }
