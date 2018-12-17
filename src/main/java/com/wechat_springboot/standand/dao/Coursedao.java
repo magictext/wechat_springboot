@@ -15,4 +15,5 @@ public class Coursedao {
         String name=(String)jdbcTemplate.queryForMap(sql,new Object[]{id}).get("course_name");
         return name;
     }
+
 }
