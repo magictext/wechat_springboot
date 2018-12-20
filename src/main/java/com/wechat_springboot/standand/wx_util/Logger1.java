@@ -44,7 +44,11 @@ public class Logger1 {
         teacherRepository.save(teacher);
     }
 
-//    public static void main(String args[]){
-//        out.println(new Logger1().Path);
-//    }
+    public static void main(String args[]){
+        Teacher teacher=new Teacher();
+        teacher.setID("166666");
+        teacher.setName("wangshu");
+        String str="{\"name\":\"wangshu\",\"id\":\"166666\"}";
+        out.println(JsonUtils.jsonToPojo(str,Teacher.class).toString()+"\n"+str);
+    }
 }

@@ -27,7 +27,7 @@ public class ServiceForClassCard extends ServiceParent{
         Student student=basicService.selectStudentByid(person.getID());
         List<ClassCardDate> list=new ArrayList<>();
         list.addAll(stuClassCardDao.SelectByStuId(student.getId()));
-        list.addAll(unionClassCardDao.SelectByClassId(student.getclass()));
+        list.addAll(unionClassCardDao.SelectByClassId(student.getClasses()));
         return list ;
     }
 

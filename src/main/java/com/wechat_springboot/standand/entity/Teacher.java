@@ -9,17 +9,17 @@ import java.util.Objects;
 @Entity
 public class Teacher{
     @Id
-    private String ID;
+    private String id;
     @Column(nullable = true)
-    private Integer score;
+    private int score;
     @Column(nullable = false)
     private String name;
     @Column(nullable = true)
-    private Integer age;
+    private int age;
     @Column(nullable = true)
     private boolean sex;
     @Column(nullable = true)
-    private Integer salary;
+    private int salary;
     @Column(nullable = true)
     public ArrayList classes;
 
@@ -30,7 +30,7 @@ public class Teacher{
     @Override
     public String toString() {
         return "Teacher{" +
-                "ID='" + ID + '\'' +
+                "id='" + id + '\'' +
                 ", score=" + score +
                 ", name='" + name + '\'' +
                 ", age=" + age +
@@ -49,22 +49,22 @@ public class Teacher{
                 age == teacher.age &&
                 sex == teacher.sex &&
                 salary == teacher.salary &&
-                Objects.equals(ID, teacher.ID) &&
+                Objects.equals(id, teacher.id) &&
                 Objects.equals(name, teacher.name) &&
                 Objects.equals(classes, teacher.classes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, score, name, age, sex, salary, classes);
+        return Objects.hash(id, score, name, age, sex, salary, classes);
     }
 
     public String getID() {
-        return ID;
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setID(String id) {
+        this.id = id;
     }
 
     public int getScore() {
@@ -115,8 +115,8 @@ public class Teacher{
         this.classes = classes;
     }
 
-    public Teacher(String ID, int score, String name, int age, boolean sex, int salary, ArrayList classes) {
-        this.ID = ID;
+    public Teacher(String id, int score, String name, int age, boolean sex, int salary, ArrayList classes) {
+        this.id = id;
         this.score = score;
         this.name = name;
         this.age = age;

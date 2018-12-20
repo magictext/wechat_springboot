@@ -8,31 +8,66 @@ import java.util.Objects;
 @Entity
 public class Student{
     @Id
-    private String Id;
+    private String id;
 
     @Column(nullable = false)
-    private String Class;
+    private String classes;
     @Column(nullable = false)
     private String name;
 
     private boolean sex;
 
+    public Student(String id, String classes, String name, boolean sex) {
+        this.id = id;
+        this.classes = classes;
+        this.name = name;
+        this.sex = sex;
+    }
+
+    public Student() {
+    }
+
+    @Override
+    public String
+    toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", classes='" + classes + '\'' +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return sex == student.sex &&
+                Objects.equals(id, student.id) &&
+                Objects.equals(classes, student.classes) &&
+                Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, classes, name, sex);
+    }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
-
-    public String getclass() {
-        return Class;
+    public String getClasses() {
+        return classes;
     }
 
-    public void setClass(String aClass) {
-        Class = aClass;
+    public void setClasses(String classes) {
+        this.classes = classes;
     }
 
     public String getName() {
@@ -49,27 +84,5 @@ public class Student{
 
     public void setSex(boolean sex) {
         this.sex = sex;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return Objects.equals(Id, student.Id) &&
-                Objects.equals(Class, student.Class);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(Id, Class);
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "Id='" + Id + '\'' +
-                ", Class='" + Class  + '\'' +
-                '}';
     }
 }

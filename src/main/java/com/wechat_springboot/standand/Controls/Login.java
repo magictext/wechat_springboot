@@ -4,13 +4,14 @@ import com.wechat_springboot.standand.entity.Person;
 import com.wechat_springboot.standand.entity.Student;
 import com.wechat_springboot.standand.entity.Teacher;
 import com.wechat_springboot.standand.wx_util.*;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.net.HttpCookie;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,23 +39,50 @@ public class Login extends ControlsParent{
         ModelMap modelMap=new ModelMap();
         Wechat_Session_model model= JsonUtils.jsonToPojo(res,Wechat_Session_model.class);
         redis.set(model.getSession_key(),model.getOpenid(),1000*60*30);
-        modelMap.addAttribute("Session_key()",model.getSession_key());
+        modelMap.addAttribute("Session_key",model.getSession_key());
         modelMap.addAttribute("isregister",basicService.isregister(model.getOpenid()));
         return modelMap;
     }
 
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public Map<String,Boolean> register(Map<String, Object> map, HttpSession httpSession, HttpCookie httpCookie) throws Exception {
-        String uid =redis.get((String) httpSession.getAttribute("session"));
-        String str=(String)httpSession.getAttribute("isteacher");
-        basicService.registerPersonn(new Person(uid, (String) map.get("id"),str.equals("true")));
-        if(str.equals("true")){
-            basicService.registerTeacher((Teacher) MapToObj.mapToObject(map,Teacher.class));
-        }else {
-            basicService.registerStudent((Student) MapToObj.mapToObject(map,Student.class));
-        }
+    @RequestMapping(value = "/register/teacher",method = RequestMethod.POST)
+    public Map<String,Object> registerTeacher(@RequestBody Teacher teacher, HttpServletRequest httpServletRequest) throws Exception {
+        logger.error("regiserTeacher"+"\t"+teacher.toString());
+        logger.error( httpServletRequest.getHeader("session_key"));
+        String session_key= httpServletRequest.getHeader("session_key");
+        //logger.error(cookie[0].getName()+"\t"+cookie[0].getComment()+"\t"+cookie[0].getValue());
+        String uid =redis.get(session_key);
+        Person person = new Person(uid,teacher.getID(),true);
+        basicService.registerPersonn(person);
+        logger.error(person.toString());
         HashMap map1=new HashMap();
-        map1.put("success",true);
+        if(basicService.isContainsTeacher(person.getID())==true) {
+
+            map1.put("res", "id已存在");
+        }
+        else {
+            basicService.registerTeacher(teacher);
+            map1.put("res", "success");
+        }
+        return map1;
+    }
+    @RequestMapping(value = "/register/student",method = RequestMethod.POST)
+    public Map<String,Object> registerStudent(@RequestBody Student student, HttpServletRequest httpServletRequest) throws Exception {
+        logger.error(httpServletRequest.getParameterMap().toString());
+        logger.error("regiserstudent"+"\t"+student.toString());
+        logger.error( httpServletRequest.getHeader("session_key"));
+        String session_key= httpServletRequest.getHeader("session_key");
+        //logger.error(cookie[0].getName()+"\t"+cookie[0].getComment()+"\t"+cookie[0].getValue());
+        String uid =redis.get(session_key);
+        ModelMap map1=new ModelMap();
+        Person person = new Person(uid,student.getId(),false);
+        basicService.registerPersonn(person);
+        if(basicService.isContainsStudent(person.getID())==true) {
+            map1.put("res2333", "id已存在");
+        }
+        else {
+            basicService.registerStudent(student);
+            map1.put("res2333", true);
+        }
         return map1;
     }
 

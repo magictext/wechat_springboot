@@ -65,4 +65,12 @@ public class BasicService extends ServiceParent{
 
     @Transactional
     public void registerClass(Classes classes){ classRepository.save(classes); }
+    @Transactional
+    public boolean isContainsTeacher(String id){
+        return teacherRepository.existsById(id);
+    }
+    @Transactional
+    public boolean isContainsStudent(String id){
+        return studentRepository.existsById(id);
+    }
 }
