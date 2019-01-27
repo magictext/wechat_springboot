@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet"  th:href="@{/sayname.css}" type="text/css" />
+</head>
+<body>
+<!--/*@thymesVar id="name" type="java.lang.String"*/-->
+<p class="name" th:text="'Hello！, ' + ${name} + '!'">3333</p>
+<p class="id" th:text="'your number is' + ${id} + '!'">3333</p>
+</body>
+</html>

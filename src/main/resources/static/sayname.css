@@ -1,0 +1,12 @@
+.name{
+    font-size:5px;
+    color: #333344;
+    border: aqua;
+    border-width: 2px;
+}
+.id{
+    font-size:14px;
+    color: blue;
+    border: aqua;
+    border-width: 2px;
+}

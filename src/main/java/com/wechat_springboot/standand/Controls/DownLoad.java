@@ -31,9 +31,11 @@ public class DownLoad {
         }
     }
 
+
     @RequestMapping(value = "/upload/{recoursename}")
     public void upload(HttpServletRequest httpServletRequest, @PathVariable(value = "name")String coursename) throws IOException {
 
     }
+
 
 }

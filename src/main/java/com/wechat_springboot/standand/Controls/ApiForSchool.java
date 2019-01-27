@@ -2,13 +2,23 @@ package com.wechat_springboot.standand.Controls;
 
 import com.wechat_springboot.standand.entity.ClassCardDate;
 import com.wechat_springboot.standand.entity.Classes;
+import org.apache.http.HttpConnection;
+import org.apache.http.HttpConnectionMetrics;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import sun.net.www.http.HttpClient;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Map;
 
 @RestController
@@ -21,6 +31,10 @@ public class ApiForSchool extends ControlsParent {
     */
     @Value("${resource.Path}")
     String Path;
+
+    public ApiForSchool() throws MalformedURLException {
+    }
+
     @RequestMapping(value = "/addClass",method = RequestMethod.POST)
     public void addClass(Classes class1){
         System.out.println("\n\n\n\n\n\n"+class1.toString()+"\n\n\n\n\n");
@@ -49,8 +63,16 @@ public class ApiForSchool extends ControlsParent {
         }
         return "download";
     }
+    @RequestMapping(value = "/upload",method = RequestMethod.POST)
+    public  String upload(HttpServletRequest httpServletRequest){
 
-
+        return "upload";
+    }
 
 
 }
+
+
+
+
+
