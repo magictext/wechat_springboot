@@ -66,24 +66,13 @@ public class Login extends ControlsParent{
         return map1;
     }
     @RequestMapping(value = "/register/student",method = RequestMethod.POST)
-    public Map<String,Object> registerStudent(@RequestBody Student student, HttpServletRequest httpServletRequest) throws Exception {
-        logger.error(httpServletRequest.getParameterMap().toString());
-        logger.error("regiserstudent"+"\t"+student.toString());
-        logger.error( httpServletRequest.getHeader("session_key"));
-        String session_key= httpServletRequest.getHeader("session_key");
-        //logger.error(cookie[0].getName()+"\t"+cookie[0].getComment()+"\t"+cookie[0].getValue());
-        String uid =redis.get(session_key);
-        ModelMap map1=new ModelMap();
-        Person person = new Person(uid,student.getId(),false);
-        basicService.registerPersonn(person);
-        if(basicService.isContainsStudent(person.getID())==true) {
-            map1.put("res2333", "id已存在");
-        }
-        else {
-            basicService.registerStudent(student);
-            map1.put("res2333", true);
-        }
-        return map1;
+    public boolean registerStudent(String sid,String id,String pass) throws Exception {
+        if(basicService.checkinfo(id,pass)){
+            if (basicService.registerStudent(sid,id))
+                return true;
+            return false;
+        }else return false;
+
     }
 
 

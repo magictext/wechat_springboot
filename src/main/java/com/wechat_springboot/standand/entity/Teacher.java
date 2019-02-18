@@ -23,6 +23,22 @@ public class Teacher{
     @Column(nullable = true)
     public ArrayList classes;
 
+    private String uid;
+    public String getUid() {
+        return uid;
+    }
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    private String info;
+
+    public String getInfo() {
+        return info;
+    }
+    public void setInfo(String info) {
+        this.info = info;
+    }
     public Teacher() {
         //setClasses(new ArrayList<Integer>());
     }

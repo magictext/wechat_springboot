@@ -24,10 +24,19 @@ public class BasicService extends ServiceParent{
 //    @Resource
 //    PersonRepository personRepository;
 
-
+    public boolean checkinfo(String id,String pass){
+        String s = studentdao.selectPassById(id);
+        if (s.equals(pass)) return true;
+        return false;
+    }
     @Transactional
-    public void registerStudent(Student student){
-        studentRepository.save(student);
+    public boolean registerStudent(String uid,String id){
+        try {
+            studentdao.registeruid(uid,id);
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
     }
 
     @Transactional
@@ -73,5 +82,5 @@ public class BasicService extends ServiceParent{
     public boolean isContainsStudent(String id){
         return studentRepository.existsById(id);
     }
-    
+
 }

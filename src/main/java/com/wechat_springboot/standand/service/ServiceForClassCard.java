@@ -46,8 +46,14 @@ public class ServiceForClassCard extends ServiceParent{
 
 
     @Transactional
-    public List<Map<String, Object>> selectStuClassCard(String id) throws Exception {
+    public List<Map<String, Object>> selectUnionClassCard(String id) throws Exception {
         String sql="select * from union_class_card where classid=?";
+        List<Map<String, Object>> maps=jdbcTemplate.queryForList(sql,new Object[]{id});
+        return maps;
+    }
+    @Transactional
+    public List<Map<String, Object>> selectStuClassCard(String id) throws Exception {
+        String sql="select * from stu_class_card where stuid=?";
         List<Map<String, Object>> maps=jdbcTemplate.queryForList(sql,new Object[]{id});
         return maps;
     }

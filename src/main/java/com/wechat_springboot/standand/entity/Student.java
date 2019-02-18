@@ -16,16 +16,18 @@ public class Student{
     @Column(nullable = false)
     private String name;
 
-    private String info;
-
     private boolean sex;
 
-    public Student(String id, String classes, String name, String info, boolean sex) {
-        this.id = id;
-        this.classes = classes;
-        this.name = name;
-        this.info = info;
-        this.sex = sex;
+    private String info;
+
+    private String uid;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getInfo() {
@@ -35,6 +37,7 @@ public class Student{
     public void setInfo(String info) {
         this.info = info;
     }
+
 
     public Student() {
     }

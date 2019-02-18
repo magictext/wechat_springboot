@@ -3,6 +3,7 @@ package com.wechat_springboot.standand.dao;
 import com.wechat_springboot.standand.entity.Student;
 import com.wechat_springboot.standand.entity.Teacher;
 import com.wechat_springboot.standand.wx_util.MapToObj;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,8 +21,14 @@ public class Teacherdao {
 
     public String selectNamebyId(String id){
         String sql="select name from teacher where id=?";
-        String name=(String)jdbcTemplate.queryForMap(sql,new Object[]{id}).get("name");
-        return name;
+        try {
+            Map<String, Object> stringObjectMap = jdbcTemplate.queryForMap(sql, new Object[]{id});
+            String name=(String)stringObjectMap.get("name");
+            return name;
+        }catch (EmptyResultDataAccessException e){
+            return "";
+        }
+
     }
 
 }

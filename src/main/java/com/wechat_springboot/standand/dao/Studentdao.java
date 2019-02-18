@@ -38,4 +38,17 @@ public class Studentdao {
         }
         return list;
     }
+    public String selectPassById(String id){
+        String sql="select info from student where id=?";
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql, new Object[]{id});
+        for (Map map:maps
+             ) {
+            return (String) map.get("info");
+        }
+        return "";
+    }
+    public void registeruid(String uid,String id){
+        String sql="update student set uid=? where id=?";
+        jdbcTemplate.update(sql,uid,id);
+    }
 }
