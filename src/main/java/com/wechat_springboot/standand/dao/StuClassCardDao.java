@@ -28,7 +28,6 @@ public class StuClassCardDao {
     StudentRepository studentRepository;
 
     public List<ClassCardDate> SelectByStuId(String id) throws Exception {
-
         String sql1="select * from stu_class_card where stuid=?";
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql1, new Object[]{id});
         List<ClassCardDate> list=new ArrayList<>();

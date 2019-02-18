@@ -1,6 +1,8 @@
 package com.wechat_springboot.standand.service;
 
+import com.wechat_springboot.standand.dao.Coursedao;
 import com.wechat_springboot.standand.dao.StuClassCardDao;
+import com.wechat_springboot.standand.dao.Teacherdao;
 import com.wechat_springboot.standand.dao.UnionClassCardDao;
 import com.wechat_springboot.standand.repository.*;
 
@@ -21,4 +23,10 @@ public class ServiceParent {
     StuClassCardDao stuClassCardDao;
     @Resource
     UnionClassCardDao unionClassCardDao;
+    @Resource
+    UnionClassCardReposotory unionClassCardReposotory;
+    @Resource
+    Teacherdao teacherdao;
+    @Resource
+    Coursedao coursedao;
 }

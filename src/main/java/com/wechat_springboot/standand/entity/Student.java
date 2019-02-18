@@ -12,16 +12,28 @@ public class Student{
 
     @Column(nullable = false)
     private String classes;
+
     @Column(nullable = false)
     private String name;
 
+    private String info;
+
     private boolean sex;
 
-    public Student(String id, String classes, String name, boolean sex) {
+    public Student(String id, String classes, String name, String info, boolean sex) {
         this.id = id;
         this.classes = classes;
         this.name = name;
+        this.info = info;
         this.sex = sex;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     public Student() {

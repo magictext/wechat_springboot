@@ -5,6 +5,7 @@ import com.wechat_springboot.standand.dao.Studentdao;
 import com.wechat_springboot.standand.service.BasicService;
 import com.wechat_springboot.standand.service.ServiceForChat;
 import com.wechat_springboot.standand.service.ServiceForClassCard;
+import com.wechat_springboot.standand.service.ServiceForClassCardData;
 import com.wechat_springboot.standand.wx_util.RedisOperator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,9 @@ public class ControlsParent {
 
     @Resource
     ServiceForChat serviceForChat;
+
+    @Resource
+    ServiceForClassCardData serviceForClassCardData;
 
     Logger logger=LoggerFactory.getLogger("Control");
 }

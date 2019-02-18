@@ -1,5 +1,7 @@
 package com.wechat_springboot.standand.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
@@ -8,7 +10,9 @@ import java.util.Objects;
 @Entity
 public class Chat {
     @Id
+    @Length(max = 144)
     String courseid;
+
     ArrayList<ChatDate> arrayList;
 
     public String getCourseid() {

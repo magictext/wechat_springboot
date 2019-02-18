@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +57,6 @@ public class Login extends ControlsParent{
         logger.error(person.toString());
         HashMap map1=new HashMap();
         if(basicService.isContainsTeacher(person.getID())==true) {
-
             map1.put("res", "id已存在");
         }
         else {
@@ -85,6 +85,7 @@ public class Login extends ControlsParent{
         }
         return map1;
     }
+
 
 
 }
