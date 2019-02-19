@@ -11,6 +11,7 @@ public class Classes {
 
     private String major;
 
+
     public String getId() {
         return id;
     }
@@ -27,7 +28,9 @@ public class Classes {
         this.major = major;
     }
 
-    @Override
+
+
+  @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

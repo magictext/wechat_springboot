@@ -11,18 +11,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.sql.Time;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+
 public class StandandApplicationTests {
-    @Resource
-    Logger logger;
+    //@Resource
+    //Logger logger;
     @Test
     public void test(){
-        logger.info("this is a log");
+        Date date=new Date();
+        date.getDate();
+        System.out.print(date.getTime());
     }
 }

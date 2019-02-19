@@ -25,9 +25,9 @@ import java.util.Map;
 @RequestMapping(value = "/api" )
 public class ApiForSchool extends ControlsParent {
     /*
-    此类api暴露给学校使用
-    用于向数据库中导入教务系统中数据。
-    简化学校使用难度
+        此类api暴露给学校使用
+        用于向数据库中导入教务系统中数据。
+        简化学校使用难度
     */
     @Value("${resource.Path}")
     String Path;
