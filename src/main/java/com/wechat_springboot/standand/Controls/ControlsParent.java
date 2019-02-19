@@ -2,10 +2,7 @@ package com.wechat_springboot.standand.Controls;
 
 import com.wechat_springboot.standand.dao.StuClassCardDao;
 import com.wechat_springboot.standand.dao.Studentdao;
-import com.wechat_springboot.standand.service.BasicService;
-import com.wechat_springboot.standand.service.ServiceForChat;
-import com.wechat_springboot.standand.service.ServiceForClassCard;
-import com.wechat_springboot.standand.service.ServiceForClassCardData;
+import com.wechat_springboot.standand.service.*;
 import com.wechat_springboot.standand.wx_util.RedisOperator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +25,9 @@ public class ControlsParent {
 
     @Resource
     ServiceForClassCardData serviceForClassCardData;
+
+    @Resource
+    ServiceForScore serviceForScore;
 
     Logger logger=LoggerFactory.getLogger("Control");
 }

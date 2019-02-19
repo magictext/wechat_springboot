@@ -24,4 +24,6 @@ public class ServiceParent {
     ClassCardDataDao classCardDataDao;
     @Resource
     Studentdao studentdao;
+    @Resource
+    ScoreDao scoreDao;
 }

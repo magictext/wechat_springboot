@@ -66,13 +66,15 @@ public class Login extends ControlsParent{
         return map1;
     }
     @RequestMapping(value = "/register/student",method = RequestMethod.POST)
-    public boolean registerStudent(String sid,String id,String pass) throws Exception {
+    public boolean registerStudent(String session,String id,String pass) throws Exception {
+        String s = redis.get(session);
         if(basicService.checkinfo(id,pass)){
-            if (basicService.registerStudent(sid,id))
+            if (basicService.registerStudent(s,id)){
+                redis.set(session,s);
                 return true;
+            }
             return false;
         }else return false;
-
     }
 
 

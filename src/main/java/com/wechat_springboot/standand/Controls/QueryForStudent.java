@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/teacher",method = RequestMethod.GET)
+@RequestMapping(value = "/studnet",method = RequestMethod.GET)
 public class QueryForStudent extends ControlsParent{
     @Autowired
     BasicService basicService;
@@ -30,4 +32,9 @@ public class QueryForStudent extends ControlsParent{
         return "hello";
     }
 
+    @RequestMapping(value = "/getscore",method = RequestMethod.GET)
+    public List getscore(String session){
+        String s = redis.get(session);
+        return serviceForScore.getScore(s);
+    }
 }
