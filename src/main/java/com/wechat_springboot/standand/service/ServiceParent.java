@@ -26,4 +26,8 @@ public class ServiceParent {
     Studentdao studentdao;
     @Resource
     ScoreDao scoreDao;
+    @Resource
+    ThemeDao themeDao;
+    @Resource
+    ThemeRepository themeRepository;
 }

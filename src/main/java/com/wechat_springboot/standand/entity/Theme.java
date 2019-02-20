@@ -1,12 +1,16 @@
 package com.wechat_springboot.standand.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
-public class Theme {
+public class Theme implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String classid;
     private long time;
