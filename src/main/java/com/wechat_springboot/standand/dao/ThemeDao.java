@@ -9,11 +9,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Repository
-public class ThemeDao extends ServiceParent {
+public class ThemeDao {
     @Resource
     JdbcTemplate jdbcTemplate;
+
     public List<Theme> getThemeList(String classid){
-        String sql="select * from theme where classid=?";
+        String sql="select * from theme where classid=? order by time";
         List<Theme> id = jdbcTemplate.queryForList(sql, Theme.class, classid);
         return id;
     }

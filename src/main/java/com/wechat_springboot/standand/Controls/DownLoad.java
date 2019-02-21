@@ -1,9 +1,10 @@
 package com.wechat_springboot.standand.Controls;
 
+import com.wechat_springboot.standand.wx_util.File_Util;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +16,9 @@ import java.io.IOException;
 @RestController
 @RequestMapping(value = "/load")
 public class DownLoad {
-    @Value("${resource.Path}")
+    @Value("${web.upload-path}")
     String Path;
+
     @RequestMapping(value = "/download/{recoursename}")
     public void download(HttpServletResponse httpServletResponse, @PathVariable(value = "name")String coursename) throws IOException {
         String url=Path+coursename;
@@ -32,10 +34,22 @@ public class DownLoad {
     }
 
 
-    @RequestMapping(value = "/upload/{recoursename}")
-    public void upload(HttpServletRequest httpServletRequest, @PathVariable(value = "name")String coursename) throws IOException {
+    @RequestMapping(value="/uploadimg", method = RequestMethod.POST)
+    public String uploadImg(@RequestParam("file") MultipartFile file,HttpServletRequest request) {
 
+        String contentType = file.getContentType();   //图片文件类型
+        String fileName = file.getOriginalFilename();  //图片名字
+
+        //文件存放路径
+        String filePath = Path;
+        //调用文件处理类FileUtil，处理文件，将文件写入指定位置
+        try {
+            File_Util.uploadFile(file.getBytes(), filePath, fileName);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        // 返回图片的存放路径
+        return filePath;
     }
-
-
 }

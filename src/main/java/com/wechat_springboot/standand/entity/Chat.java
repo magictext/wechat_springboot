@@ -3,60 +3,83 @@ package com.wechat_springboot.standand.entity;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Objects;
 
 @Entity
 public class Chat {
     @Id
-    @Length(max = 144)
-    String courseid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String themeid;
+    private long time;
+    private Date date;
+    private String name;
+    private String content;
+    private String imageid;
 
-    ArrayList<ChatDate> arrayList;
-
-    public String getCourseid() {
-        return courseid;
+    public int getId() {
+        return id;
     }
 
-    public void setCourseid(String courseid) {
-        this.courseid = courseid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void add(ChatDate chatDate){
-        if (arrayList.size()==100){
-            arrayList.add(chatDate);
-            arrayList.remove(0);
-        }else arrayList.add(chatDate);
+    public Chat() {
+        time=new java.util.Date().getTime();
+        date=new Date(time);
     }
 
-    @Override
-    public String toString() {
-        return "Chat{" +
-                "courseid='" + courseid + '\'' +
-                ", arrayList=" + arrayList +
-                '}';
+    public String getThemeid() {
+        return themeid;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Chat chat = (Chat) o;
-        return Objects.equals(courseid, chat.courseid) &&
-                Objects.equals(arrayList, chat.arrayList);
+    public void setThemeid(String themeid) {
+        this.themeid = themeid;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(courseid, arrayList);
+    public long getTime() {
+        return time;
     }
 
-    public ArrayList<ChatDate> getArrayList() {
-        return arrayList;
+    public void setTime(long time) {
+        this.time = time;
     }
 
-    public void setArrayList(ArrayList<ChatDate> arrayList) {
-        this.arrayList = arrayList;
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getImageid() {
+        return imageid;
+    }
+
+    public void setImageid(String imageid) {
+        this.imageid = imageid;
     }
 }

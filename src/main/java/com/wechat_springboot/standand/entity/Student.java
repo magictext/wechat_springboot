@@ -78,6 +78,7 @@ public class Student{
     }
 
     public String getClasses() {
+        if(classes==null) return "";
         return classes;
     }
 
